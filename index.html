@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portal Kehadiran SEEP 2026</title>
     <style>
-        /* Tetapan Tema & Warna Sarawak (Kuning, Merah, Hitam Lembut) */
+        /* TEMA 3 WARNA SARAWAK (Lembut / Pastel) */
         :root {
-            --soft-yellow: #fcf4c0;
-            --soft-red: #fadbd8;
-            --soft-black: #5d6d7e;
+            --soft-yellow: #fff9c4; /* Kuning lembut */
+            --soft-red: #ffcdd2;    /* Merah lembut */
+            --soft-black: #757575;  /* Hitam/Kelabu lembut */
+            
             --green: #2ecc71;
             --yellow: #f1c40f;
             --red: #e74c3c;
@@ -21,246 +22,189 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, var(--soft-yellow) 0%, var(--soft-red) 50%, #e5e7e9 100%);
+            /* Latar belakang bercirikan 3 warna Sarawak yang lembut */
+            background: linear-gradient(135deg, var(--soft-yellow) 0%, var(--soft-red) 50%, var(--soft-black) 100%);
             color: var(--dark);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
         }
 
-        /* Header & Logo */
-        .header-container {
-            position: relative;
+        /* BAHAGIAN ATAS: Tajuk & Logo (Tidak bertindih) */
+        .top-branding {
             text-align: center;
-            background-color: var(--soft-black);
-            color: var(--white);
-        }
-        
-        .header-bg {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-            opacity: 0.8;
-            display: block;
-        }
-
-        .header-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 15px 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 2;
         }
 
         .logo {
-            width: 60px;
+            width: 80px;
             height: auto;
-            margin-bottom: 5px;
+            margin-bottom: 10px;
         }
 
-        .header-title {
+        .portal-title {
             margin: 0;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: var(--dark);
+            text-transform: uppercase;
+        }
+
+        .portal-year {
+            margin: 0;
+            font-size: 1.2rem;
+            color: var(--soft-black);
             font-weight: bold;
         }
 
-        .header-subtitle {
-            margin: 0;
-            font-size: 1.2rem;
+        /* BAHAGIAN ATAS: Header Imej (Dipamerkan sepenuhnya) */
+        .header-image-container {
+            width: 100%;
+            background-color: #000;
         }
 
-        /* Container Utama */
+        .header-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            max-height: 250px; /* Menghalang imej terlalu besar di skrin desktop */
+            object-fit: contain; /* Memastikan imej tidak dipotong */
+        }
+
+        /* CONTAINER UTAMA */
         .container {
             flex: 1;
             padding: 20px;
             max-width: 800px;
-            margin: 0 auto;
+            margin: 20px auto;
             width: 100%;
             box-sizing: border-box;
-            background: rgba(255, 255, 255, 0.9);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
             border-radius: 10px;
-            margin-top: -10px;
-            z-index: 10;
-            position: relative;
         }
 
-        /* Sembunyikan elemen secara lalai */
         .hidden { display: none !important; }
 
-        /* Borang Log Masuk */
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-
+        /* BORANG & BUTANG */
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: bold; }
         .form-group input, .form-group select {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 1rem;
-            box-sizing: border-box;
+            width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 5px; font-size: 1rem; box-sizing: border-box;
         }
 
         .btn {
-            padding: 12px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: bold;
-            color: var(--white);
-            background-color: var(--soft-black);
-            transition: 0.3s;
-            text-align: center;
-            width: 100%;
-            margin-bottom: 10px;
-            box-sizing: border-box;
+            padding: 12px 15px; border: none; border-radius: 5px; cursor: pointer; font-size: 1rem; font-weight: bold;
+            color: var(--white); background-color: var(--soft-black); transition: 0.3s; text-align: center; width: 100%; margin-bottom: 10px; box-sizing: border-box;
         }
-
-        .btn:hover { opacity: 0.9; }
+        .btn:hover { opacity: 0.85; }
+        
         .btn-primary { background-color: #3498db; }
         .btn-success { background-color: var(--green); }
         .btn-danger { background-color: var(--red); }
         .btn-warning { background-color: var(--yellow); color: var(--dark); }
-        
-        /* Senarai Pelajar */
+        .btn-secondary { background-color: #95a5a6; }
+
+        /* KAD PELAJAR & BUTANG KEHADIRAN */
         .student-card {
-            background: #fdfdfd;
-            border: 1px solid #e0e0e0;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 10px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            background: #fdfdfd; border: 1px solid #e0e0e0; padding: 15px; border-radius: 8px; margin-bottom: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
+        .student-name { font-weight: bold; margin-bottom: 10px; font-size: 1.1rem; }
 
-        .student-name {
-            font-weight: bold;
-            margin-bottom: 10px;
-            font-size: 1.1rem;
-        }
-
-        .attendance-options {
-            display: flex;
-            gap: 10px;
-        }
-
+        .attendance-options { display: flex; gap: 8px; flex-wrap: wrap; }
         .attendance-options label {
-            flex: 1;
-            text-align: center;
-            padding: 10px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            color: white;
-            transition: 0.2s;
+            flex: 1; text-align: center; padding: 12px 5px; border-radius: 5px; cursor: pointer; font-weight: bold; color: white; min-width: 80px; font-size: 0.9rem;
         }
-
         .attendance-options input[type="radio"] { display: none; }
         
-        /* Warna Butang Kehadiran */
-        .opt-hadir { background-color: #a9dfbf; color: #145a32; }
-        .opt-bersebab { background-color: #f9e79f; color: #7d6608; }
-        .opt-tanpa-sebab { background-color: #f5b7b1; color: #78281f; }
+        /* Warna Butang Dinamik */
+        .opt-hadir { background-color: #a9dfbf; color: #145a32; border: 2px solid transparent; }
+        .opt-bersebab { background-color: #f9e79f; color: #7d6608; border: 2px solid transparent; }
+        .opt-tanpa-sebab { background-color: #f5b7b1; color: #78281f; border: 2px solid transparent; }
 
-        input[type="radio"]:checked + .opt-hadir { background-color: var(--green); color: white; border: 2px solid #145a32; }
-        input[type="radio"]:checked + .opt-bersebab { background-color: var(--yellow); color: black; border: 2px solid #7d6608; }
-        input[type="radio"]:checked + .opt-tanpa-sebab { background-color: var(--red); color: white; border: 2px solid #78281f; }
+        input[type="radio"]:checked + .opt-hadir { background-color: var(--green); color: white; border-color: #145a32; }
+        input[type="radio"]:checked + .opt-bersebab { background-color: var(--yellow); color: black; border-color: #7d6608; }
+        input[type="radio"]:checked + .opt-tanpa-sebab { background-color: var(--red); color: white; border-color: #78281f; }
 
-        /* Dashboard Table */
-        .table-responsive { overflow-x: auto; }
-        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
-        th, td { border: 1px solid #ccc; padding: 10px; text-align: left; }
-        th { background-color: var(--soft-black); color: white; }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 15px;
-            background-color: var(--dark);
-            color: var(--white);
-            margin-top: auto;
-            font-size: 0.9rem;
-        }
-
-        /* Navigasi Bawah */
-        .bottom-nav {
-            display: flex;
-            flex-wrap: wrap;
+        /* SUSUNAN NAVIGASI BAWAH */
+        .action-nav {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
             gap: 10px;
-            margin-top: 20px;
+            margin-top: 25px;
             border-top: 2px solid #eee;
             padding-top: 15px;
         }
-        .bottom-nav .btn { flex: 1; min-width: 120px; }
-        
-        #loading { text-align: center; color: var(--red); font-weight: bold; margin: 10px 0; }
 
+        /* JADUAL DASHBOARD */
+        .table-responsive { overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 0.9rem; }
+        th, td { border: 1px solid #ccc; padding: 10px; text-align: left; }
+        th { background-color: var(--soft-black); color: white; }
+
+        /* FOOTER */
+        footer {
+            text-align: center; padding: 15px; background-color: var(--dark); color: var(--white); margin-top: auto; font-size: 0.9rem;
+        }
+
+        #loading { text-align: center; color: var(--red); font-weight: bold; margin: 10px 0; font-size: 1.1rem; }
     </style>
 </head>
 <body>
 
-    <div class="header-container">
-        <img src="https://i.ibb.co/JjrcP5G0/Social-Studies-Google-Classroom-Header-in-Dark-Red-and-Yellow-Illustrative-Style.png" alt="Header Background" class="header-bg">
-        <div class="header-content">
-            <img src="https://i.ibb.co/VYSKMXf1/Logo-Selirik.png" alt="Logo Sekolah" class="logo">
-            <h1 class="header-title">PORTAL KEHADIRAN SEEP</h1>
-            <h2 class="header-subtitle">Tahun 2026</h2>
-        </div>
+    <div class="top-branding">
+        <img src="https://i.ibb.co/VYSKMXf1/Logo-Selirik.png" alt="Logo Sekolah" class="logo">
+        <h1 class="portal-title">PORTAL KEHADIRAN SEEP</h1>
+        <h2 class="portal-year">Tahun 2026</h2>
+    </div>
+
+    <div class="header-image-container">
+        <img src="https://i.ibb.co/JjrcP5G0/Social-Studies-Google-Classroom-Header-in-Dark-Red-and-Yellow-Illustrative-Style.png" alt="Header Visual" class="header-img">
     </div>
 
     <div class="container">
-        <div id="loading" class="hidden">Sedang memproses... Sila tunggu sebentar.</div>
+        <div id="loading" class="hidden">Sedang memproses sistem... Sila tunggu.</div>
 
         <div id="section-login">
-            <h3>Log Masuk Guru</h3>
+            <h3 style="text-align:center;">Log Masuk Guru</h3>
             <div class="form-group">
                 <label for="icInput">No. Kad Pengenalan (ID):</label>
-                <input type="number" id="icInput" placeholder="Masukkan ID tanpa sempang (-)">
+                <input type="number" id="icInput" placeholder="No Kad Pengenalan (Tanpa sempang)">
             </div>
-            <button class="btn btn-primary" onclick="login()">Semak ID</button>
+            <button class="btn btn-primary" onclick="login()">Log Masuk</button>
         </div>
 
         <div id="section-selection" class="hidden">
-            <h3 id="guruNameDisplay">Selamat Datang</h3>
+            <h3 id="guruNameDisplay" style="color: var(--dark);">Selamat Datang</h3>
             <div class="form-group">
-                <label for="subjectSelect">Pilih Subjek & Kelas:</label>
+                <label for="subjectSelect">1. Pilih Subjek & Kelas Anda:</label>
                 <select id="subjectSelect"></select>
             </div>
             <div class="form-group">
-                <label for="kumpulanSelect">Pilih Kumpulan (Jika Ada):</label>
-                <select id="kumpulanSelect">
-                    <option value="SEMUA">Semua Kumpulan</option>
-                    <option value="1">Kumpulan 1</option>
-                    <option value="2">Kumpulan 2</option>
-                </select>
+                <label for="kumpulanInput">2. Tapisan Kolum C (Subjek/Kumpulan):</label>
+                <input type="text" id="kumpulanInput" placeholder="Contoh: KUMPULAN 1 atau MATEMATIK (Biarkan kosong jika semua)">
+                <small style="color:gray;">*Sistem menapis pelajar mengikut Kolum B (Kelas) dan Kolum C (Subjek/Kumpulan)</small>
             </div>
             <div class="form-group">
-                <label for="sesiSelect">Pilih Sesi:</label>
+                <label for="sesiSelect">3. Pilih Sesi Kehadiran:</label>
                 <select id="sesiSelect">
                     </select>
             </div>
             <button class="btn btn-success" onclick="loadStudents()">Buka Senarai Kehadiran</button>
-            <button class="btn btn-danger" onclick="logout()">Keluar</button>
+            <button class="btn btn-danger" onclick="logout()">Keluar Sistem</button>
         </div>
 
         <div id="section-attendance" class="hidden">
-            <h3 id="kelasTitle">Senarai Kelas</h3>
-            <p id="sesiTitle">Sesi: </p>
+            <h3 id="kelasTitle" style="margin-bottom: 5px;">Senarai Kelas</h3>
+            <p id="sesiTitle" style="margin-top: 0; color: #555; font-weight: bold;"></p>
+            
             <div id="studentListContainer"></div>
 
-            <div class="bottom-nav">
-                <button class="btn btn-warning" onclick="showSection('section-selection')">Kembali</button>
+            <div class="action-nav">
+                <button class="btn btn-secondary" onclick="showSection('section-selection')">Kembali</button>
                 <button class="btn btn-success" onclick="simpanDanHantar()">Simpan & Hantar</button>
                 <button class="btn btn-primary" onclick="showDashboard()">Semak Rekod</button>
                 <button class="btn btn-danger" onclick="logout()">Keluar</button>
@@ -273,9 +217,8 @@
                 <table id="dashboardTable">
                     <thead>
                         <tr>
-                            <th>Tarikh & Masa</th>
+                            <th>Sesi & Tarikh</th>
                             <th>Subjek/Kelas</th>
-                            <th>Sesi</th>
                             <th>Tindakan</th>
                         </tr>
                     </thead>
@@ -283,9 +226,9 @@
                 </table>
             </div>
             
-            <div class="bottom-nav">
-                <button class="btn btn-warning" onclick="showSection('section-attendance')">Kembali</button>
-                <button class="btn btn-danger" onclick="logout()">Keluar</button>
+            <div class="action-nav" style="display: flex;">
+                <button class="btn btn-secondary" style="flex:1; margin-right:5px;" onclick="showSection('section-attendance')">Kembali</button>
+                <button class="btn btn-danger" style="flex:1; margin-left:5px;" onclick="logout()">Keluar</button>
             </div>
         </div>
     </div>
@@ -358,7 +301,7 @@
             5: "https://script.google.com/macros/s/AKfycby7Sh3IuM-rd5FYzzGDThEPssW8hMmYbFKIRwkwSilJ7WFVPLLiiuR0wh_ZJdcj5Wtv/exec"
         };
 
-        // Paparkan Sesi 1 - 18
+        // Menjana Sesi 1 - 18
         window.onload = () => {
             const sesiSelect = document.getElementById('sesiSelect');
             for(let i=1; i<=18; i++) {
@@ -367,12 +310,11 @@
                 opt.innerText = "Sesi " + i;
                 sesiSelect.appendChild(opt);
             }
-            // Semak jika guru sudah log masuk
+            // Log masuk automatik jika data masih dalam localstorage
             let loggedInId = localStorage.getItem('loggedInTeacher');
             if(loggedInId) showSelectionPanel(loggedInId);
         };
 
-        // Navigasi Seksyen
         function showSection(sectionId) {
             document.getElementById('section-login').classList.add('hidden');
             document.getElementById('section-selection').classList.add('hidden');
@@ -381,26 +323,27 @@
             document.getElementById(sectionId).classList.remove('hidden');
         }
 
-        // Tunjuk Loading
         function toggleLoading(show) {
             document.getElementById('loading').classList.toggle('hidden', !show);
         }
 
-        // --- FUNGSI LOGIN ---
+        // --- FUNGSI LOGIN & LOGOUT ---
         function login() {
             let ic = document.getElementById('icInput').value.trim();
             if (teachersData[ic]) {
                 localStorage.setItem('loggedInTeacher', ic);
                 showSelectionPanel(ic);
             } else {
-                alert("ID tidak dijumpai. Sila cuba lagi.");
+                alert("Nombor Kad Pengenalan tidak dijumpai di dalam sistem.");
             }
         }
 
         function logout() {
-            localStorage.removeItem('loggedInTeacher');
-            document.getElementById('icInput').value = '';
-            showSection('section-login');
+            if(confirm("Adakah anda pasti mahu keluar dari sistem? Data rekod semakan masih tersimpan di peranti anda.")){
+                localStorage.removeItem('loggedInTeacher');
+                document.getElementById('icInput').value = '';
+                showSection('section-login');
+            }
         }
 
         function showSelectionPanel(ic) {
@@ -418,7 +361,7 @@
             showSection('section-selection');
         }
 
-        // --- AMBIL & PROSES DATA PELAJAR ---
+        // --- AMBIL DATA DARI CSV MASTER ---
         let currentStudents = [];
         let currentSubject = "";
         let currentSesi = "";
@@ -427,46 +370,50 @@
         async function loadStudents() {
             currentSubject = document.getElementById('subjectSelect').value;
             currentSesi = document.getElementById('sesiSelect').value;
-            let kumpulan = document.getElementById('kumpulanSelect').value;
+            let filterKumpulan = document.getElementById('kumpulanInput').value.trim().toUpperCase();
             
-            // Kenalpasti Tingkatan dari nama subjek (contoh: MATEMATIK 5 DIAMOND -> 5)
+            // Ekstrak Tingkatan dari nama subjek
             let match = currentSubject.match(/\d/);
             currentTingkatan = match ? match[0] : "1";
             
-            // Kenalpasti Kelas 
+            // Ekstrak Nama Kelas dari subjek (Cth: MATEMATIK 5 DIAMOND -> DIAMOND)
             let kelasParts = currentSubject.split(currentTingkatan);
             let namaKelas = kelasParts.length > 1 ? kelasParts[1].trim() : currentSubject;
 
-            document.getElementById('kelasTitle').innerText = `Subjek: ${currentSubject}`;
-            document.getElementById('sesiTitle').innerText = `Sesi ${currentSesi} | Kumpulan: ${kumpulan}`;
+            document.getElementById('kelasTitle').innerText = `Kelas: ${currentSubject}`;
+            document.getElementById('sesiTitle').innerText = `Sesi ${currentSesi} ` + (filterKumpulan ? `| Kumpulan: ${filterKumpulan}` : "");
             
             toggleLoading(true);
             try {
                 let response = await fetch(csvLinks[currentTingkatan]);
                 let data = await response.text();
-                parseCSV(data, namaKelas, kumpulan);
+                parseCSV(data, namaKelas, filterKumpulan);
                 renderStudentList();
                 showSection('section-attendance');
             } catch (err) {
-                alert("Gagal memuat turun data pelajar. Sila semak sambungan internet anda.");
+                alert("Gagal mengakses senarai pelajar. Sila pastikan telefon anda mempunyai capaian internet.");
             }
             toggleLoading(false);
         }
 
-        function parseCSV(csvText, targetClass, targetGroup) {
+        function parseCSV(csvText, targetClass, filterKumpulan) {
             currentStudents = [];
             let rows = csvText.split('\n');
-            // Abaikan baris pertama (Header)
+            
+            // Mula dari baris ke-2 (Baris 1 ialah Tajuk/Header)
             for(let i=1; i<rows.length; i++) {
                 if(!rows[i].trim()) continue;
-                // Parse ringkas (andaian tiada koma di dalam nama/kelas)
+                
+                // Pisahkan lajur mengikut koma
                 let cols = rows[i].split(','); 
                 let nama = cols[0] ? cols[0].trim().toUpperCase() : "";
                 let kelas = cols[1] ? cols[1].trim().toUpperCase() : "";
                 let kumpulan = cols[2] ? cols[2].trim().toUpperCase() : "";
 
+                // Syarat: Kolum B mesti mengandungi nama kelas yang dipilih
                 if (kelas.includes(targetClass.toUpperCase())) {
-                    if (targetGroup === "SEMUA" || kumpulan === targetGroup || kumpulan === `KUMPULAN ${targetGroup}`) {
+                    // Syarat: Kolum C mesti sepadan dengan tapisan guru (Jika tapisan dimasukkan)
+                    if (filterKumpulan === "" || kumpulan.includes(filterKumpulan)) {
                         currentStudents.push({ nama: nama, status: "" });
                     }
                 }
@@ -478,7 +425,7 @@
             container.innerHTML = "";
             
             if(currentStudents.length === 0) {
-                container.innerHTML = "<p><i>Tiada data pelajar dijumpai untuk kriteria ini.</i></p>";
+                container.innerHTML = "<p style='color:red;'><i>Tiada pelajar ditemui. Sila semak semula ejaan tapisan subjek/kumpulan anda.</i></p>";
                 return;
             }
 
@@ -498,36 +445,39 @@
                         <input type="radio" name="status_${index}" id="tanpa_${index}" value="Tidak Hadir Tanpa Sebab" onchange="updateStatus(${index}, 'Tidak Hadir Tanpa Sebab')">
                         <label class="opt-tanpa-sebab" for="tanpa_${index}">Tanpa Sebab</label>
                     </div>
-                    <input type="text" class="hidden-enter-trigger" style="opacity:0; height:1px; width:1px; position:absolute;" onkeydown="handleEnterKey(event, ${index})">
+                    <input type="text" style="opacity:0; height:1px; width:1px; position:absolute;" onkeydown="handleEnterKey(event, ${index})">
                 `;
                 container.appendChild(div);
             });
         }
 
-        // Lompat automatik (Enter key behavior)
+        // --- FUNGSI LOMPAT ENTER (MOBILE FRIENDLY) ---
         function handleEnterKey(e, currentIndex) {
             if (e.key === "Enter") {
                 e.preventDefault();
-                let nextRadio = document.getElementById(`hadir_${currentIndex + 1}`);
-                if(nextRadio) {
-                    nextRadio.focus();
-                    // Scroll ke elemen
-                    nextRadio.scrollIntoView({ behavior: "smooth", block: "center" });
+                // Jika enter ditekan, lompat ke input tersembunyi pelajar seterusnya untuk meneruskan scroll
+                let nextCardInput = document.querySelector(`input[onkeydown="handleEnterKey(event, ${currentIndex + 1})"]`);
+                if(nextCardInput) {
+                    nextCardInput.focus();
+                    nextCardInput.scrollIntoView({ behavior: "smooth", block: "center" });
                 }
             }
         }
 
-        // Pilihan status juga membolehkan jump ke kad seterusnya bagi mudahkan cikgu di mobile
         function updateStatus(index, status) {
             currentStudents[index].status = status;
-            // Auto scroll to next student smoothly
-            let nextCard = document.querySelector(`input[name="status_${index+1}"]`);
-            if(nextCard) {
-                setTimeout(() => nextCard.scrollIntoView({ behavior: "smooth", block: "center" }), 200);
+            
+            // Automatik lompat ke pelajar seterusnya apabila butang kehadiran diklik (Lebih mesra Mobile)
+            let nextIndex = index + 1;
+            if(nextIndex < currentStudents.length) {
+                let nextLabel = document.querySelector(`label[for="hadir_${nextIndex}"]`);
+                if(nextLabel) {
+                    setTimeout(() => nextLabel.scrollIntoView({ behavior: "smooth", block: "center" }), 150);
+                }
             }
         }
 
-        // --- SIMPAN & HANTAR ---
+        // --- SIMPAN & HANTAR KE GOOGLE SHEETS ---
         async function simpanDanHantar() {
             let belumTanda = currentStudents.filter(s => s.status === "");
             if(belumTanda.length > 0) {
@@ -537,7 +487,6 @@
 
             toggleLoading(true);
             
-            // Simpan ke Local Storage
             let idRekod = Date.now().toString();
             let recordData = {
                 id: idRekod,
@@ -548,11 +497,12 @@
                 pelajar: currentStudents
             };
 
+            // Simpan ke peranti
             let allRecords = JSON.parse(localStorage.getItem('kehadiranSEEP') || "[]");
             allRecords.push(recordData);
             localStorage.setItem('kehadiranSEEP', JSON.stringify(allRecords));
 
-            // Hantar ke Google Apps Script
+            // Hantar ke Google Script
             let url = scriptLinks[currentTingkatan];
             let payload = {
                 method: "POST",
@@ -562,19 +512,18 @@
             };
 
             try {
-                // Notis: Disebabkan mode 'no-cors', response takkan boleh dibaca status 200/dsb oleh JS, 
-                // tapi data akan tetap dihantar.
+                // (Nota: no-cors tak membenarkan bacaan response balik, tapi POST akan tetap jalan ke pangkalan data)
                 await fetch(url, payload);
-                alert("Kehadiran berjaya disimpan dan dihantar!");
+                alert("Berjaya! Kehadiran disimpan dan dihantar.");
                 showDashboard();
             } catch (err) {
-                alert("Ralat menghantar data ke pelayan. Data disimpan di dalam telefon anda.");
+                alert("Data disimpan di telefon bimbit anda. Ralat semasa menghantar ke pangkalan data.");
                 showDashboard();
             }
             toggleLoading(false);
         }
 
-        // --- DASHBOARD ---
+        // --- DASHBOARD: SEMAKAN, KEMASKINI, HAPUS ---
         function showDashboard() {
             showSection('section-dashboard');
             let tbody = document.querySelector('#dashboardTable tbody');
@@ -583,20 +532,19 @@
             let allRecords = JSON.parse(localStorage.getItem('kehadiranSEEP') || "[]");
             
             if(allRecords.length === 0) {
-                tbody.innerHTML = "<tr><td colspan='4' style='text-align:center;'>Tiada rekod disimpan.</td></tr>";
+                tbody.innerHTML = "<tr><td colspan='3' style='text-align:center;'>Tiada rekod disimpan di peranti ini.</td></tr>";
                 return;
             }
 
-            // Reverse susunan (terkini di atas)
+            // Pamer data bermula dengan yang terkini (reverse)
             allRecords.slice().reverse().forEach(rec => {
                 let tr = document.createElement('tr');
                 tr.innerHTML = `
-                    <td>${rec.tarikh}</td>
+                    <td><b>Sesi ${rec.sesi}</b><br><small>${rec.tarikh}</small></td>
                     <td>${rec.subjek}</td>
-                    <td>Sesi ${rec.sesi}</td>
                     <td>
-                        <button class="btn btn-warning" style="padding:5px 10px; margin:2px;" onclick="kemaskiniRekod('${rec.id}')">Kemaskini</button>
-                        <button class="btn btn-danger" style="padding:5px 10px; margin:2px;" onclick="hapusRekod('${rec.id}')">Hapus</button>
+                        <button class="btn btn-warning" style="padding:8px; margin-bottom:5px; font-size:0.85rem;" onclick="kemaskiniRekod('${rec.id}')">Kemaskini</button>
+                        <button class="btn btn-danger" style="padding:8px; font-size:0.85rem;" onclick="hapusRekod('${rec.id}')">Hapus</button>
                     </td>
                 `;
                 tbody.appendChild(tr);
@@ -604,15 +552,15 @@
         }
 
         function hapusRekod(id) {
-            if(confirm("Adakah anda pasti mahu memadam rekod ini dari sistem dan pelayan?")) {
+            if(confirm("Adakah anda pasti mahu memadam rekod kehadiran ini? Data di dalam Google Sheet Master juga akan terhapus jika Script diselaraskan.")) {
                 let allRecords = JSON.parse(localStorage.getItem('kehadiranSEEP') || "[]");
                 let recordToDelete = allRecords.find(r => r.id === id);
                 
-                // Padam dari local
+                // Buang dari localStorage
                 let updatedRecords = allRecords.filter(r => r.id !== id);
                 localStorage.setItem('kehadiranSEEP', JSON.stringify(updatedRecords));
                 
-                // Trigger ke Google Apps Script (Anda perlu set App Script terima parameter {action: 'delete'})
+                // Minta Google Script buang rekod
                 if (recordToDelete) {
                     let url = scriptLinks[recordToDelete.tingkatan];
                     fetch(url, {
@@ -623,39 +571,40 @@
                     }).catch(e => console.log(e));
                 }
 
-                alert("Rekod dihapuskan.");
+                alert("Rekod telah berjaya dihapuskan.");
                 showDashboard();
             }
         }
 
         function kemaskiniRekod(id) {
-            alert("Fungsi ini membolehkan anda memuat semula data. Untuk kemaskini, rekod akan dibuka semula di paparan kehadiran.");
             let allRecords = JSON.parse(localStorage.getItem('kehadiranSEEP') || "[]");
             let rec = allRecords.find(r => r.id === id);
             
             if(rec) {
-                // Muatkan semula pembolehubah
+                alert("Rekod ini akan dibuka semula untuk dikemaskini. Setelah ditanda, klik 'Simpan & Hantar' sekali lagi.");
+                
+                // Muatkan semula data sesi tersebut
                 currentTingkatan = rec.tingkatan;
                 currentSubject = rec.subjek;
                 currentSesi = rec.sesi;
                 currentStudents = rec.pelajar;
                 
-                document.getElementById('kelasTitle').innerText = `Subjek (KEMASKINI): ${currentSubject}`;
+                document.getElementById('kelasTitle').innerText = `Kelas (KEMASKINI): ${currentSubject}`;
                 document.getElementById('sesiTitle').innerText = `Sesi ${currentSesi}`;
                 
                 renderStudentList();
                 
-                // Set semula radio buttons berdasarkan data lepas
+                // Set semula nilai radio yang telah disimpan sebelumnya
                 currentStudents.forEach((student, index) => {
                     if(student.status) {
-                        let radioVal = student.status === "Hadir" ? `hadir_${index}` : 
-                                       student.status === "Tidak Hadir Bersebab" ? `bersebab_${index}` : `tanpa_${index}`;
-                        let rBtn = document.getElementById(radioVal);
-                        if(rBtn) rBtn.checked = true;
+                        let radioId = student.status === "Hadir" ? `hadir_${index}` : 
+                                      student.status === "Tidak Hadir Bersebab" ? `bersebab_${index}` : `tanpa_${index}`;
+                        let radioElement = document.getElementById(radioId);
+                        if(radioElement) radioElement.checked = true;
                     }
                 });
 
-                // Padam rekod lama sebab cikgu akan "Simpan & Hantar" sebagai rekod baru di row yang sama (bergantung cara logik backend App Script anda)
+                // Hapus rekod ID lama kerana kita akan jana rekod baru apabila "Simpan & Hantar" ditekan (mengelakkan duplikasi)
                 hapusRekod(id);
                 showSection('section-attendance');
             }
